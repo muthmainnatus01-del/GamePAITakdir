@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misi Menjemput Takdir Terbaik - Game Edukasi PAI Ma'had Al Bayyinah</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dusty: {
+                            50: '#FAF4F5',
+                            100: '#F5E8EA',
+                            200: '#E8D0D5',
+                            300: '#D8A7B1',
+                            400: '#C78593',
+                            500: '#B86B7C',
+                            600: '#A15062',
+                        },
+                        mauve: {
+                            100: '#F2ECEE',
+                            300: '#D5C4CB',
+                            500: '#B28D9B',
+                            700: '#7E5B6A',
+                            900: '#4A323D',
+                        },
+                        cream: {
+                            100: '#FFFDF9',
+                            200: '#FFF9F0',
+                            300: '#FDF0DF',
+                            400: '#F5EBE0',
+                        },
+                        gold: {
+                            300: '#F4E0A5',
+                            400: '#E6CA75',
+                            500: '#D4AF37',
+                            600: '#B89220',
+                            700: '#8C6C10',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        arabic: ['Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styles & CSS Animations */
+        body {
+            background-color: #FAF4F5;
+            color: #2C3E50;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#D8A7B1 0.75px, transparent 0.75px), radial-gradient(#D8A7B1 0.75px, #FAF4F5 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(216, 167, 177, 0.3);
+            box-shadow: 0 10px 30px -5px rgba(178, 141, 155, 0.15);
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #B86B7C 0%, #B28D9B 100%);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(184, 107, 124, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(184, 107, 124, 0.4);
+            background: linear-gradient(135deg, #A15062 0%, #A07887 100%);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #C5A059 100%);
+            color: #4A323D;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, #E6CA75 0%, #D4AF37 100%);
+        }
+
+        /* Modal Overlay */
+        .modal-bg {
+            background: rgba(74, 50, 61, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Print Style Sheet for Certificates */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .glass-card {
+                border: 2px solid #D4AF37 !important;
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-dusty-300 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="w-full bg-white/80 backdrop-blur-md border-b border-dusty-200 sticky top-0 z-40 no-print">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-dusty-100 border border-dusty-300 flex items-center justify-center text-dusty-600 font-bold">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <div>
+                    <h1 class="text-sm md:text-base font-bold text-mauve-900 leading-tight">MA'HAD AL BAYYINAH</h1>
+                    <p class="text-xs text-dusty-600 font-medium">Misi Menjemput Takdir Terbaik</p>
+                </div>
+            </div>
+
+            <!-- Stats Bar (Visible when game starts) -->
+            <div id="topStatsBar" class="hidden flex items-center gap-4 text-xs md:text-sm font-semibold">
+                <div class="bg-cream-200 border border-gold-300 px-3 py-1.5 rounded-full flex items-center gap-1.5 text-mauve-900">
+                    <span class="text-gold-600">⭐</span>
+                    <span id="statPoints">0 Poin</span>
+                </div>
+                <div class="bg-dusty-100 border border-dusty-300 px-3 py-1.5 rounded-full text-dusty-600 hidden sm:block">
+                    Ukhti: <span id="statPlayerName" class="text-mauve-900 font-bold">-</span>
+                </div>
+                <button id="btnSoundToggle" onclick="toggleAudio()" class="p-2 rounded-full bg-cream-200 text-mauve-700 hover:bg-dusty-200 transition" title="Suara On/Off">
+                    🔊
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-5xl w-full mx-auto p-4 md:p-6 my-4">
+
+        <!-- SCREEN 1: REGISTRATION & WELCOME -->
+        <section id="screenRegister" class="glass-card rounded-3xl p-6 md:p-10 text-center relative overflow-hidden transition-all">
+            <!-- Decorative Islamic Pattern SVG -->
+            <div class="absolute -top-12 -right-12 w-40 h-40 opacity-10 text-mauve-900 pointer-events-none">
+                <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 0 L60 35 L95 35 L67 57 L77 91 L50 70 L23 91 L33 57 L5 35 L40 35 Z"/></svg>
+            </div>
+
+            <div class="max-w-2xl mx-auto space-y-6">
+                <!-- Mascot Avatar: Ummi Masroh -->
+                <div class="relative w-28 h-28 mx-auto">
+                    <div class="w-28 h-28 rounded-full bg-mauve-100 border-4 border-gold-400 overflow-hidden shadow-lg flex items-center justify-center">
+                        <!-- SVG Avatar Ummi Masroh (Syar'i with Niqab) -->
+                        <svg viewBox="0 0 120 120" class="w-full h-full">
+                            <!-- Background -->
+                            <circle cx="60" cy="60" r="60" fill="#F5E8EA"/>
+                            <!-- Hijab Wide -->
+                            <path d="M 20 120 Q 20 40 60 25 Q 100 40 100 120 Z" fill="#4A323D"/>
+                            <!-- Niqab & Face Shield Area -->
+                            <path d="M 40 45 Q 60 40 80 45 Q 85 70 60 72 Q 35 70 40 45 Z" fill="#2C3E50"/>
+                            <!-- Eyes Area (Sober, Friendly expression) -->
+                            <ellipse cx="48" cy="52" rx="4" ry="2.5" fill="#FFF"/>
+                            <ellipse cx="72" cy="52" rx="4" ry="2.5" fill="#FFF"/>
+                            <circle cx="48" cy="52" r="1.8" fill="#2C3E50"/>
+                            <circle cx="72" cy="52" r="1.8" fill="#2C3E50"/>
+                            <!-- Eyebrows -->
+                            <path d="M 42 47 Q 48 45 54 48" stroke="#FFF" stroke-width="1.5" fill="none"/>
+                            <path d="M 66 48 Q 72 45 78 47" stroke="#FFF" stroke-width="1.5" fill="none"/>
+                            <!-- Niqab Veil Overlay -->
+                            <path d="M 38 58 Q 60 62 82 58 L 85 120 L 35 120 Z" fill="#1A252F"/>
+                            <!-- Veil Accents -->
+                            <path d="M 40 68 Q 60 73 80 68" stroke="#D4AF37" stroke-width="1" fill="none"/>
+                        </svg>
+                    </div>
+                    <span class="absolute bottom-0 right-0 bg-gold-500 text-xs text-mauve-900 font-bold px-2 py-0.5 rounded-full border border-white shadow">Pemandu</span>
+                </div>
+
+                <div>
+                    <span class="text-xs font-bold tracking-widest uppercase px-3 py-1 bg-dusty-100 text-dusty-600 rounded-full">Game Pembelajaran PAI SMA</span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold text-mauve-900 mt-2">MISI MENJEMPUT TAKDIR TERBAIK</h2>
+                    <p class="text-sm md:text-base text-mauve-700 italic mt-1">"Mengenal Amalan yang Menjadi Sebab Datangnya Kebaikan dengan Izin Allah"</p>
+                </div>
+
+                <!-- Registration Form -->
+                <div class="bg-white p-6 rounded-2xl border border-dusty-200 text-left space-y-4 shadow-sm max-w-md mx-auto">
+                    <h3 class="font-bold text-mauve-900 border-b pb-2 text-center">Identitas Santriwati</h3>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-mauve-700 mb-1">Nama Lengkap Santriwati <span class="text-red-500">*</span></label>
+                        <input type="text" id="inputPlayerName" placeholder="Masukkan nama lengkap anti..." class="w-full px-4 py-2.5 rounded-xl border border-dusty-300 focus:outline-none focus:ring-2 focus:ring-dusty-400 text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-mauve-700 mb-1">Kelas <span class="text-red-500">*</span></label>
+                        <select id="inputPlayerClass" class="w-full px-4 py-2.5 rounded-xl border border-dusty-300 focus:outline-none focus:ring-2 focus:ring-dusty-400 text-sm">
+                            <option value="">-- Pilih Kelas --</option>
+                            <option value="X / 10">Kelas X (10)</option>
+                            <option value="XI / 11">Kelas XI (11)</option>
+                            <option value="XII / 12">Kelas XII (12)</option>
+                        </select>
+                    </div>
+
+                    <div id="regErrorMsg" class="hidden text-xs text-red-600 bg-red-50 p-2.5 rounded-lg border border-red-200 text-center font-medium">
+                        Mohon lengkapi Nama Lengkap dan Kelas terlebih dahulu!
+                    </div>
+
+                    <button onclick="submitRegistration()" class="w-full btn-primary font-bold py-3 px-6 rounded-xl text-base flex items-center justify-center gap-2">
+                        <span>MULAI PETUALANGAN</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </button>
+                </div>
+
+                <div class="text-xs text-dusty-600 italic">
+                    Ditujukan khusus untuk Santriwati SMA Ma'had Al Bayyinah
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 2: ADVENTURE MAP (LEVEL & POS SELECTION) -->
+        <section id="screenMap" class="hidden space-y-6">
+            <!-- Greeting Banner -->
+            <div class="glass-card rounded-2xl p-5 flex flex-col md:flex-row items-center gap-4 border-l-4 border-l-gold-500">
+                <div class="w-16 h-16 rounded-full bg-mauve-100 border-2 border-gold-400 overflow-hidden shrink-0">
+                    <svg viewBox="0 0 120 120" class="w-full h-full">
+                        <circle cx="60" cy="60" r="60" fill="#F5E8EA"/>
+                        <path d="M 20 120 Q 20 40 60 25 Q 100 40 100 120 Z" fill="#4A323D"/>
+                        <path d="M 40 45 Q 60 40 80 45 Q 85 70 60 72 Q 35 70 40 45 Z" fill="#2C3E50"/>
+                        <ellipse cx="48" cy="52" rx="4" ry="2.5" fill="#FFF"/>
+                        <ellipse cx="72" cy="52" rx="4" ry="2.5" fill="#FFF"/>
+                        <circle cx="48" cy="52" r="1.8" fill="#2C3E50"/>
+                        <circle cx="72" cy="52" r="1.8" fill="#2C3E50"/>
+                        <path d="M 38 58 Q 60 62 82 58 L 85 120 L 35 120 Z" fill="#1A252F"/>
+                    </svg>
+                </div>
+                <div class="space-y-1 text-center md:text-left">
+                    <h3 class="font-bold text-mauve-900 text-lg">Pesan Ummi Masroh:</h3>
+                    <p id="welcomeGreetingText" class="text-sm text-mauve-800 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Levels & Guard Posts Tree -->
+            <div class="space-y-6">
+                
+                <!-- LEVEL 1 CARD -->
+                <div class="glass-card rounded-2xl p-6 relative overflow-hidden border-t-4 border-t-dusty-400">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center gap-2 mb-4 border-b pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-dusty-600 tracking-wider uppercase">LEVEL 1</span>
+                            <h3 class="text-xl font-bold text-mauve-900">Gerbang Ikhtiar</h3>
+                            <p class="text-xs text-mauve-700">Tema: Memahami Takdir dan Kekuatan Doa</p>
+                        </div>
+                        <span id="badgeL1" class="self-start md:self-auto text-xs px-3 py-1 rounded-full font-bold bg-cream-200 text-gold-700 border border-gold-300">
+                            Aktif
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Pos 1 Button -->
+                        <div id="cardPos1" onclick="openPost(1)" class="bg-white p-4 rounded-xl border-2 border-dusty-300 hover:border-dusty-500 cursor-pointer transition flex items-center justify-between shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-dusty-100 text-dusty-600 font-bold flex items-center justify-center">1</div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-mauve-900">Pos 1: Penjaga Gerbang Takdir</h4>
+                                    <p class="text-xs text-mauve-600">3 Soal • QS. Al-Qamar: 49</p>
+                                </div>
+                            </div>
+                            <span id="statusPos1" class="text-xs font-bold text-dusty-500">Mulai</span>
+                        </div>
+
+                        <!-- Pos 2 Button -->
+                        <div id="cardPos2" onclick="openPost(2)" class="bg-white opacity-60 p-4 rounded-xl border-2 border-gray-200 cursor-not-allowed transition flex items-center justify-between shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-400 font-bold flex items-center justify-center">2</div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-mauve-900">Pos 2: Penjaga Pintu Doa</h4>
+                                    <p class="text-xs text-mauve-600">4 Soal • QS. Al-Baqarah: 186</p>
+                                </div>
+                            </div>
+                            <span id="statusPos2" class="text-xs font-bold text-gray-400">Terkunci 🔒</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LEVEL 2 CARD -->
+                <div class="glass-card rounded-2xl p-6 relative overflow-hidden border-t-4 border-t-mauve-500">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center gap-2 mb-4 border-b pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-mauve-700 tracking-wider uppercase">LEVEL 2</span>
+                            <h3 class="text-xl font-bold text-mauve-900">Gerbang Amal Saleh</h3>
+                            <p class="text-xs text-mauve-700">Tema: Tiga Amalan yang Menjadi Sebab Kebaikan</p>
+                        </div>
+                        <span id="badgeL2" class="self-start md:self-auto text-xs px-3 py-1 rounded-full font-bold bg-gray-100 text-gray-500 border border-gray-200">
+                            Terkunci 🔒
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Pos 3 -->
+                        <div id="cardPos3" onclick="openPost(3)" class="bg-white opacity-60 p-4 rounded-xl border-2 border-gray-200 cursor-not-allowed transition flex items-center justify-between shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-400 font-bold flex items-center justify-center">3</div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-mauve-900">Pos 3: Silaturahmi</h4>
+                                    <p class="text-xs text-mauve-600">4 Soal • HR. Bukhari</p>
+                                </div>
+                            </div>
+                            <span id="statusPos3" class="text-xs font-bold text-gray-400">🔒</span>
+                        </div>
+
+                        <!-- Pos 4 -->
+                        <div id="cardPos4" onclick="openPost(4)" class="bg-white opacity-60 p-4 rounded-xl border-2 border-gray-200 cursor-not-allowed transition flex items-center justify-between shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-400 font-bold flex items-center justify-center">4</div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-mauve-900">Pos 4: Sedekah</h4>
+                                    <p class="text-xs text-mauve-600">3 Soal • QS. Al-Baqarah</p>
+                                </div>
+                            </div>
+                            <span id="statusPos4" class="text-xs font-bold text-gray-400">🔒</span>
+                        </div>
+
+                        <!-- Pos 5 -->
+                        <div id="cardPos5" onclick="openPost(5)" class="bg-white opacity-60 p-4 rounded-xl border-2 border-gray-200 cursor-not-allowed transition flex items-center justify-between shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-400 font-bold flex items-center justify-center">5</div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-mauve-900">Pos 5: Birrul Walidain</h4>
+                                    <p class="text-xs text-mauve-600">4 Soal • QS. Al-Isra</p>
+                                </div>
+                            </div>
+                            <span id="statusPos5" class="text-xs font-bold text-gray-400">🔒</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LEVEL 3 CARD -->
+                <div class="glass-card rounded-2xl p-6 relative overflow-hidden border-t-4 border-t-gold-500">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center gap-2 mb-4 border-b pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-gold-700 tracking-wider uppercase">LEVEL 3</span>
+                            <h3 class="text-xl font-bold text-mauve-900">Gerbang Istiqamah & Final Boss</h3>
+                            <p class="text-xs text-mauve-700">Tema: Taqwa, Istighfar, Menolong Sesama & Tahajud</p>
+                        </div>
+                        <span id="badgeL3" class="self-start md:self-auto text-xs px-3 py-1 rounded-full font-bold bg-gray-100 text-gray-500 border border-gray-200">
+                            Terkunci 🔒
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Pos 6 -->
+                        <div id="cardPos6" onclick="openPost(6)" class="bg-white opacity-60 p-4 rounded-xl border-2 border-gray-200 cursor-not-allowed transition flex items-center justify-between shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-400 font-bold flex items-center justify-center">6</div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-mauve-900">Pos 6: Taqwa & Istighfar</h4>
+                                    <p class="text-xs text-mauve-600">3 Soal • QS. At-Talaq</p>
+                                </div>
+                            </div>
+                            <span id="statusPos6" class="text-xs font-bold text-gray-400">🔒</span>
+                        </div>
+
+                        <!-- Pos 7 -->
+                        <div id="cardPos7" onclick="openPost(7)" class="bg-white opacity-60 p-4 rounded-xl border-2 border-gray-200 cursor-not-allowed transition flex items-center justify-between shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-400 font-bold flex items-center justify-center">7</div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-mauve-900">Pos 7: Kebaikan & Tahajud</h4>
+                                    <p class="text-xs text-mauve-600">4 Soal • QS. Al-Ma'idah</p>
+                                </div>
+                            </div>
+                            <span id="statusPos7" class="text-xs font-bold text-gray-400">🔒</span>
+                        </div>
+
+                        <!-- Final Boss Card -->
+                        <div id="cardPos8" onclick="openPost(8)" class="bg-cream-200 opacity-60 p-4 rounded-xl border-2 border-gold-400 cursor-not-allowed transition flex items-center justify-between shadow-sm md:col-span-1">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gold-500 text-mauve-900 font-bold flex items-center justify-center shadow">👑</div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-mauve-900">FINAL BOSS UJIAN</h4>
+                                    <p class="text-xs text-mauve-700">10 Soal Integratif</p>
+                                </div>
+                            </div>
+                            <span id="statusPos8" class="text-xs font-bold text-gold-700">🔒 Ujian</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SCREEN 3: POST LESSON & QUIZ VIEW -->
+        <section id="screenPostDetail" class="hidden space-y-6">
+            <!-- Header Nav Back -->
+            <button onclick="backToMap()" class="text-xs font-bold text-mauve-700 hover:text-mauve-900 flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-dusty-300 shadow-sm transition">
+                ← Kembali ke Peta Misi
+            </button>
+
+            <!-- Guard Post Banner -->
+            <div class="glass-card rounded-2xl p-6 border-l-4 border-l-dusty-500 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <span id="postLevelLabel" class="text-xs font-bold text-dusty-600 tracking-wider uppercase">LEVEL 1 • POS 1</span>
+                    <h2 id="postTitleLabel" class="text-2xl font-bold text-mauve-900">Penjaga Gerbang Takdir</h2>
+                    <p id="postTopicLabel" class="text-sm text-mauve-700">Materi dasar Iman kepada Takdir & Hubungan Doa</p>
+                </div>
+                <div class="w-14 h-14 rounded-full bg-mauve-100 border-2 border-gold-400 overflow-hidden shrink-0">
+                    <svg viewBox="0 0 120 120" class="w-full h-full">
+                        <circle cx="60" cy="60" r="60" fill="#F5E8EA"/>
+                        <path d="M 20 120 Q 20 40 60 25 Q 100 40 100 120 Z" fill="#4A323D"/>
+                        <path d="M 40 45 Q 60 40 80 45 Q 85 70 60 72 Q 35 70 40 45 Z" fill="#2C3E50"/>
+                        <ellipse cx="48" cy="52" rx="4" ry="2.5" fill="#FFF"/>
+                        <ellipse cx="72" cy="52" rx="4" ry="2.5" fill="#FFF"/>
+                        <path d="M 38 58 Q 60 62 82 58 L 85 120 L 35 120 Z" fill="#1A252F"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Material Explanation Card (Step 1) -->
+            <div id="boxMaterial" class="glass-card rounded-2xl p-6 md:p-8 space-y-5">
+                <div class="flex items-center gap-2 border-b pb-3">
+                    <span class="text-lg">📖</span>
+                    <h3 class="font-bold text-lg text-mauve-900">Materi & Dalil Pembekalan Ummi Masroh</h3>
+                </div>
+
+                <div id="materialContentText" class="text-sm md:text-base text-mauve-900 leading-relaxed space-y-3">
+                    <!-- Material injected dynamically -->
+                </div>
+
+                <!-- Dalil Box -->
+                <div class="bg-cream-200 border border-gold-300 rounded-xl p-4 text-center space-y-2">
+                    <span class="text-xs font-bold text-gold-700 uppercase tracking-widest">Dalil Utama</span>
+                    <p id="dalilArabic" class="arabic-text text-xl md:text-2xl text-mauve-900 font-bold leading-loose"></p>
+                    <p id="dalilTranslation" class="text-xs md:text-sm text-mauve-800 italic"></p>
+                    <p id="dalilReference" class="text-xs font-bold text-dusty-600"></p>
+                </div>
+
+                <button onclick="startQuizForCurrentPost()" class="w-full btn-gold py-3 rounded-xl font-bold text-center text-sm md:text-base mt-4 shadow-md">
+                    SIAP JAWAB TANTANGAN SOAL →
+                </button>
+            </div>
+
+            <!-- Quiz Challenge Box (Step 2) -->
+            <div id="boxQuiz" class="hidden glass-card rounded-2xl p-6 md:p-8 space-y-6">
+                <!-- Question Progress Bar -->
+                <div class="flex justify-between items-center text-xs font-bold text-mauve-700 border-b pb-2">
+                    <span id="quizProgressText">Soal 1 dari 3</span>
+                    <span id="quizPoinBadge" class="text-gold-600 bg-cream-200 px-2.5 py-1 rounded-full border border-gold-300">+100 Poin per Soal Benar</span>
+                </div>
+
+                <!-- Question Text -->
+                <div id="quizQuestionText" class="text-base md:text-lg font-bold text-mauve-900 leading-snug">
+                    <!-- Dynamic Question -->
+                </div>
+
+                <!-- Multiple Choice Options -->
+                <div id="quizOptionsContainer" class="space-y-3">
+                    <!-- Dynamic Options Buttons -->
+                </div>
+
+                <!-- Discussion / Pembahasan Area (After Answer) -->
+                <div id="quizFeedbackBox" class="hidden p-5 rounded-xl border space-y-3 transition-all">
+                    <div id="quizFeedbackHeader" class="font-bold text-base flex items-center gap-2"></div>
+                    <p id="quizFeedbackBody" class="text-xs md:text-sm text-mauve-900 leading-relaxed"></p>
+                    <button id="btnNextQuestion" onclick="nextQuestion()" class="btn-primary py-2.5 px-6 rounded-xl font-bold text-sm mt-2">
+                        Lanjut Soal Berikutnya →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 4: FINAL RESULTS & CERTIFICATE -->
+        <section id="screenResult" class="hidden space-y-6">
+            <div class="glass-card rounded-3xl p-6 md:p-10 text-center space-y-8 border-2 border-gold-400 relative">
+                
+                <!-- Certificate Header -->
+                <div class="space-y-2 border-b border-gold-300 pb-6">
+                    <span class="text-xs font-bold tracking-widest text-gold-700 uppercase bg-cream-200 px-4 py-1 rounded-full border border-gold-300">
+                        LEMBAR HASIL PENYELESAIAN GAME EDUKASI
+                    </span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold text-mauve-900">MISI MENJEMPUT TAKDIR TERBAIK</h2>
+                    <p class="text-xs md:text-sm text-mauve-700">Ma'had Al Bayyinah • Program Pembelajaran PAI Santriwati SMA</p>
+                </div>
+
+                <!-- Student Info Badge -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 bg-cream-100 p-4 rounded-2xl border border-dusty-200 text-left text-xs md:text-sm">
+                    <div>
+                        <span class="text-dusty-600 block text-xs">Nama Santriwati:</span>
+                        <span id="resPlayerName" class="font-bold text-mauve-900 text-sm md:text-base">-</span>
+                    </div>
+                    <div>
+                        <span class="text-dusty-600 block text-xs">Kelas:</span>
+                        <span id="resPlayerClass" class="font-bold text-mauve-900 text-sm md:text-base">-</span>
+                    </div>
+                    <div>
+                        <span class="text-dusty-600 block text-xs">Tanggal Selesai:</span>
+                        <span id="resDate" class="font-bold text-mauve-900">-</span>
+                    </div>
+                    <div>
+                        <span class="text-dusty-600 block text-xs">Total Skor Poin:</span>
+                        <span id="resTotalPoints" class="font-extrabold text-gold-600 text-base md:text-lg">0 Poin</span>
+                    </div>
+                </div>
+
+                <!-- Achievement Title Badge -->
+                <div class="bg-gradient-to-r from-dusty-100 via-cream-200 to-dusty-100 p-6 rounded-2xl border-2 border-gold-400 gold-glow space-y-2">
+                    <span class="text-xs font-bold text-mauve-700 uppercase tracking-widest">Gelar Pencapaian Game</span>
+                    <div id="resBadgeTitle" class="text-2xl md:text-3xl font-extrabold text-mauve-900">
+                        🏆 Bintang Istiqamah
+                    </div>
+                    <p id="resAkurasiText" class="text-xs md:text-sm text-mauve-800 font-medium">Persentase Ketepatan Jawaban: 100%</p>
+                </div>
+
+                <!-- Ummi Masroh Closing Remarks -->
+                <div class="bg-white p-5 rounded-2xl border border-dusty-300 text-left flex flex-col md:flex-row items-center gap-4">
+                    <div class="w-20 h-20 rounded-full bg-mauve-100 border-2 border-gold-400 overflow-hidden shrink-0">
+                        <svg viewBox="0 0 120 120" class="w-full h-full">
+                            <circle cx="60" cy="60" r="60" fill="#F5E8EA"/>
+                            <path d="M 20 120 Q 20 40 60 25 Q 100 40 100 120 Z" fill="#4A323D"/>
+                            <path d="M 40 45 Q 60 40 80 45 Q 85 70 60 72 Q 35 70 40 45 Z" fill="#2C3E50"/>
+                            <ellipse cx="48" cy="52" rx="4" ry="2.5" fill="#FFF"/>
+                            <ellipse cx="72" cy="52" rx="4" ry="2.5" fill="#FFF"/>
+                            <path d="M 38 58 Q 60 62 82 58 L 85 120 L 35 120 Z" fill="#1A252F"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1 text-xs md:text-sm text-mauve-900 leading-relaxed">
+                        <p class="font-bold text-mauve-900 text-base">Pesan Nasihat Ummi Masroh:</p>
+                        <p id="resUmmiMessage">
+                            "Barakallahu fiiki, anti! Alhamdulillah, anti telah menyelesaikan perjalanan ilmu ini. Semoga Allah menjadikan kita hamba-hamba yang senantiasa berdoa, beramal saleh, bertakwa, dan bertawakal kepada-Nya..."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 7 Amalan Summary Card -->
+                <div class="bg-white p-5 rounded-2xl border border-dusty-200 text-left space-y-3">
+                    <h4 class="font-bold text-mauve-900 text-sm border-b pb-2">Ringkasan 7 Amalan yang Telah Dipelajari:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-mauve-800">
+                        <div class="flex items-center gap-2">1. <span><strong>Iman Takdir:</strong> Beriman bahwa segala sesuatu terjadi dengan ilmu & ketetapan Allah.</span></div>
+                        <div class="flex items-center gap-2">2. <span><strong>Doa & Adab:</strong> Memohon hanya kepada Allah dengan ikhlas pada waktu-waktu utama.</span></div>
+                        <div class="flex items-center gap-2">3. <span><strong>Silaturahmi:</strong> Menyambung kasih sayang kerabat sebagai sebab kelapangan rezeki.</span></div>
+                        <div class="flex items-center gap-2">4. <span><strong>Sedekah:</strong> Memberi ikhlas karena Allah tanpa merasa pamer atau terpaksa.</span></div>
+                        <div class="flex items-center gap-2">5. <span><strong>Birrul Walidain:</strong> Berbakti kepada orang tua dalam batas ketaatan pada syariat.</span></div>
+                        <div class="flex items-center gap-2">6. <span><strong>Taqwa & Istighfar:</strong> Menjalankan perintah Allah, menjauhi larangan, & rajin bertaubat.</span></div>
+                        <div class="flex items-center gap-2">7. <span><strong>Kebaikan & Tahajud:</strong> Menolong sesama & menghidupkan sepertiga malam terakhir.</span></div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons (No Print Area) -->
+                <div class="flex flex-wrap items-center justify-center gap-3 pt-4 no-print">
+                    <button onclick="window.print()" class="btn-gold py-3 px-6 rounded-xl text-sm flex items-center gap-2">
+                        🖨️ Cetak / Simpan Laporan PDF
+                    </button>
+                    <button onclick="toggleReviewModal()" class="btn-primary py-3 px-6 rounded-xl text-sm flex items-center gap-2">
+                        📋 Lihat Pembahasan Lengkap
+                    </button>
+                    <button onclick="restartGame()" class="bg-gray-100 hover:bg-gray-200 text-mauve-900 font-bold py-3 px-6 rounded-xl text-sm transition">
+                        🔄 Main Lagi
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-white/60 border-t border-dusty-200 py-3 text-center text-xs text-mauve-700 no-print">
+        Ma'had Al Bayyinah © 2026 • Game Edukasi Islami Interaktif PAI SMA
+    </footer>
+
+    <!-- REVIEW MODAL (FULL QUESTION REVIEW) -->
+    <div id="reviewModal" class="hidden fixed inset-0 z-50 modal-bg flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6 space-y-4 shadow-2xl border border-dusty-300">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-bold text-lg text-mauve-900">Pembahasan Lengkap Semua Soal</h3>
+                <button onclick="toggleReviewModal()" class="text-mauve-700 font-bold hover:text-red-500 text-xl">&times;</button>
+            </div>
+            <div id="reviewListContainer" class="space-y-4 text-left text-xs md:text-sm">
+                <!-- Dynamically filled review items -->
+            </div>
+            <button onclick="toggleReviewModal()" class="w-full btn-primary py-2.5 rounded-xl font-bold text-sm">
+                Tutup Pembahasan
+            </button>
+        </div>
+    </div>
+
+    <!-- AUDIO SYNTHESIS SCRIPT & GAME ENGINE LOGIC -->
+    <script>
+        /* ============================================================
+           DATA GAME: POS & SOAL (Ahlus Sunnah wal Jama'ah Compliant)
+           ============================================================ */
+        const GAME_DATA = [
+            {
+                id: 1,
+                level: 1,
+                title: "Penjaga Gerbang Takdir",
+                topic: "Memahami Takdir dan Kekuatan Doa",
+                material: "Iman kepada takdir Allah merupakan rukun iman ke-6. Segala sesuatu yang terjadi di alam semesta berada dalam ilmu, kehendak, dan ketetapan Allah Azza wa Jalla. Doa tidak bertentangan dengan takdir, melainkan doa itu sendiri merupakan bagian dari sebab yang telah Allah syariatkan. Seorang Muslimah tetap diperintahkan untuk berdoa, beramal, dan mengambil sebab yang dibenarkan syariat.",
+                dalil: {
+                    arabic: "إِنَّا كُلَّ شَيْءٍ خَلَقْنَاهُ بِقَدَرٍ",
+                    translation: "Sungguh, Kami menciptakan segala sesuatu menurut ukuran (takdir).",
+                    ref: "QS. Al-Qamar ayat 49"
+                },
+                questions: [
+                    {
+                        q: "Manakah pernyataan yang paling tepat mengenai doa dan takdir?",
+                        options: [
+                            "Doa tidak diperlukan karena semua sudah ditakdirkan.",
+                            "Doa merupakan sebab yang disyariatkan, dan hasilnya berada di tangan Allah.",
+                            "Manusia dapat mengubah seluruh ketetapan Allah sesuai keinginannya.",
+                            "Takdir hanya berlaku bagi orang yang tidak berusaha."
+                        ],
+                        ans: 1, // Index 1 = B
+                        explanation: "Berdoa dan berikhtiar merupakan bagian dari keimanan kepada takdir, bukan penentangan terhadapnya. Allah menetapkan takdir sekaligus sebab-sebabnya."
+                    },
+                    {
+                        q: "Sikap yang benar sebagai santriwati ketika mempercayai takdir Allah adalah...",
+                        options: [
+                            "Pasrah tanpa mau belajar saat ujian.",
+                            "Berusaha maksimal, berdoa, lalu bertawakal atas hasil yang Allah tetapkan.",
+                            "Menyalahkan takdir jika keinginan tidak terwujud.",
+                            "Meyakini bahwa usaha manusia menentukan segalanya tanpa campur tangan Allah."
+                        ],
+                        ans: 1,
+                        explanation: "Tawakal sejati dilakukan setelah berusaha (mengambil sebab) dan berdoa, serta rida terhadap ketetapan Allah."
+                    },
+                    {
+                        q: "Allah SWT memerintahkan hamba-Nya untuk berdoa dalam Surah Ghafir ayat 60 dengan janji...",
+                        options: [
+                            "Pasti dikabulkan persis seperti yang diminta di dunia detik itu juga.",
+                            "Allah akan memperkenankan (mengabulkan) doa hamba-Nya sesuai hikmah-Nya.",
+                            "Doa hanya dikabulkan jika disampaikan lewat perantara wali.",
+                            "Doa tidak akan didengar jika kita pernah berbuat dosa kecil."
+                        ],
+                        ans: 1,
+                        explanation: "Allah berjanji memperkenankan doa hamba-Nya. Pengabulannya bisa dalam bentuk diberi yang diminta, dihindarkan dari keburukan, atau disimpan sebagai pahala di akhirat."
+                    }
+                ]
+            },
+            {
+                id: 2,
+                level: 1,
+                title: "Penjaga Pintu Doa",
+                topic: "Adab Doa & Waktu-Waktu Utama",
+                material: "Doa adalah ibadah yang sangat mulia. Di antara adab berdoa adalah memohon hanya kepada Allah, dilakukan dengan ikhlas, rendah hati (tadharrur), dan penuh harap. Santriwati hendaknya memanfaatkan waktu-waktu mujaab (utama) untuk berdoa seperti sepertiga malam terakhir, saat sujud, dan antara azan serta iqamah.",
+                dalil: {
+                    arabic: "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ",
+                    translation: "Dan apabila hamba-hamba-Ku bertanya kepadamu tentang Aku, maka sesungguhnya Aku adalah dekat. Aku mengabulkan permohonan orang yang berdoa apabila ia memohon kepada-Ku.",
+                    ref: "QS. Al-Baqarah ayat 186"
+                },
+                questions: [
+                    {
+                        q: "Ketika anti menghadapi ujian sekolah yang sulit, tindakan terbaik sesuai syariat adalah...",
+                        options: [
+                            "Berdoa saja tanpa belajar.",
+                            "Belajar saja dan tidak perlu berdoa.",
+                            "Berdoa, belajar dengan sungguh-sungguh, dan bertawakal kepada Allah.",
+                            "Menyerah karena menganggap hasilnya sudah ditentukan."
+                        ],
+                        ans: 2,
+                        explanation: "Islam mengajarkan keseimbangan antara ikhtiar lahiriah (belajar) dan ikhtiar batiniah (doa dan tawakal)."
+                    },
+                    {
+                        q: "Berdasarkan hadis sahih riwayat Bukhari dan Muslim, waktu malam yang sangat utama untuk berdoa adalah...",
+                        options: [
+                            "Awal malam sebelum tidur.",
+                            "Sepertiga malam terakhir.",
+                            "Tepat saat tengah malam.",
+                            "Saat matahari terbenam."
+                        ],
+                        ans: 1,
+                        explanation: "Rasulullah SAW bersabda bahwa Allah bertajalli ke langit dunia pada sepertiga malam terakhir dan menawarkan ampunan serta pengabulan doa."
+                    },
+                    {
+                        q: "Di antara adab berdoa berikut yang TIDAK sesuai dengan tuntunan adalah...",
+                        options: [
+                            "Memulainya dengan pujian kepada Allah dan shalawat.",
+                            "Berdoa dengan penuh keyakinan dan ikhlas.",
+                            "Meminta hal-hal yang mengandung dosa atau memutus silaturahmi.",
+                            "Rendah hati dan tidak tergesa-gesa."
+                        ],
+                        ans: 2,
+                        explanation: "Syarat dikabulkannya doa adalah tidak meminta hal yang diharamkan atau memutus tali kekerabatan."
+                    },
+                    {
+                        q: "Mengapa kita dilarang bertawasul/meminta doa kepada orang yang sudah meninggal?",
+                        options: [
+                            "Karena hanya Allah satu-satunya Tempat Meminta (As-Samad) dan orang meninggal tidak dapat mendengar/membantu.",
+                            "Karena orang meninggal sedang istirahat.",
+                            "Karena biaya ziarah mahal.",
+                            "Boleh saja jika orang tersebut wali."
+                        ],
+                        ans: 0,
+                        explanation: "Murni meminta hanya kepada Allah adalah inti tauhid. Meminta kepada ahli kubur merupakan pelanggaran tauhid ibadah."
+                    }
+                ]
+            },
+            {
+                id: 3,
+                level: 2,
+                title: "Penjaga Silaturahmi",
+                topic: "Menyambung Tali Kekerabatan",
+                material: "Menyambung silaturahmi khusus berlaku bagi sanak kerabat yang memiliki hubungan darah. Dalam hadis sahih, silaturahmi menjadi sebab dilapangkannya rezeki dan dipanjangkannya umur (dikaruniai keberkahan hidup) berdasarkan ketetapan dan sebab yang Allah takdirkan.",
+                dalil: {
+                    arabic: "مَنْ أَحَبَّ أَنْ يُبْسَطَ لَهُ فِي رِزْقِهِ وَيُنْسَأَ لَهُ فِي أَثَرِهِ فَلْيَصِلْ رَحِمَهُ",
+                    translation: "Barangsiapa yang ingin dilapangkan rezekinya dan dipanjangkan umurnya, maka hendaklah ia menyambung silaturahmi.",
+                    ref: "HR. Bukhari no. 5986 & Muslim no. 2557"
+                },
+                questions: [
+                    {
+                        q: "Makna 'dipanjangkan umurnya' dalam hadis silaturahmi menurut penjelasan para ulama adalah...",
+                        options: [
+                            "Pasti hidup lebih dari 100 tahun.",
+                            "Diberahi keberkahan dalam umurnya dan taufik untuk beramal saleh.",
+                            "Ajalnya dihapus dari Lauhul Mahfuzh secara mutlak.",
+                            "Bebas dari musibah selamanya."
+                        ],
+                        ans: 1,
+                        explanation: "Para ulama menjelaskan bahwa dipanjangkan umur artinya umurnya diberkahi dengan kebaikan, atau memang sudah dituliskan dalam ilmu Allah bahwa ia akan bersilaturahmi sehingga umurnya panjang."
+                    },
+                    {
+                        q: "Anti sedang sibuk dengan kegiatan pondok, sedangkan kerabat/bibi anti sedang sakit. Sikap terbaik anti adalah...",
+                        options: [
+                            "Pura-pura tidak tahu karena sibuk.",
+                            "Mendoakan dan berusaha menyapa/menanyakan kabar via pesan sesuai kemampuan.",
+                            "Keluar pondok tanpa izin pengasuh.",
+                            "Menyalahkan pimpinan pondok karena tidak meliburkan."
+                        ],
+                        ans: 1,
+                        explanation: "Menyambung silaturahmi disesuaikan dengan kemampuan dan aturan yang berlaku tanpa melanggar kedisiplinan syar'i."
+                    },
+                    {
+                        q: "Kepada siapakah istilah 'Silaturahmi' secara khusus ditujukan dalam syariat?",
+                        options: [
+                            "Hanya kawan sekelas di pondok.",
+                            "Kerabat yang memiliki hubungan nasab/darah (orang tua, paman, bibi, saudara).",
+                            "Masyarakat umum yang tidak kenal.",
+                            "Orang asing di media sosial."
+                        ],
+                        ans: 1,
+                        explanation: "Secara bahasa syar'i, Ar-Rahim merujuk pada sanak kerabat yang terikat hubungan darah/nasab."
+                    }
+                ]
+            },
+            {
+                id: 4,
+                level: 2,
+                title: "Penjaga Sedekah",
+                topic: "Keutamaan Infak & Keikhlasan Hati",
+                material: "Sedekah merupakan amalan mulia yang melipatgandakan pahala dan menjadi sebab turunnya keberkahan rezeki. Sedekah harus dilakukan ikhlas karena Allah tanpa riya' (pamer) atau menyakiti perasaan penerima. Sedekah tidak terbatas harta semata.",
+                dalil: {
+                    arabic: "مَّثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنبَتَتْ سَبْعَ سَنَابِلَ",
+                    translation: "Perumpamaan orang yang menginfakkan hartanya di jalan Allah seperti sebutir biji yang menumbuhkan tujuh tangkai...",
+                    ref: "QS. Al-Baqarah ayat 261"
+                },
+                questions: [
+                    {
+                        q: "Anti hanya memiliki sedikit uang saku di pondok. Apa amalan sedekah terbaik yang bisa anti lakukan?",
+                        options: [
+                            "Tidak perlu bersedekah sampai menjadi santriwati kaya.",
+                            "Bersedekah sesuai kemampuan dengan ikhlas walau nominalnya kecil.",
+                            "Meminjam uang teman agar terlihat dermawan.",
+                            "Bersedekah hanya jika dilihat oleh ustadzah."
+                        ],
+                        ans: 1,
+                        explanation: "Sedekah bernilai tinggi di sisi Allah jika dikeluarkan dalam keadaan sulit dengan penuh keikhlasan."
+                    },
+                    {
+                        q: "Manakah sikap yang dapat MEMBATALKAN pahala sedekah sesuai Surah Al-Baqarah ayat 264?",
+                        options: [
+                            "Bersedekah secara sembunyi-sembunyi.",
+                            "Mengingat-ingat pemberian dan menyebut-nyebutnya (manna) serta menyakiti perasaan penerima.",
+                            "Mendoakan kebaikan bagi yang diberi.",
+                            "Bersedekah dengan barang yang masih layak."
+                        ],
+                        ans: 1,
+                        explanation: "Allah melarang menyebut-nyebut sedekah (al-mann) dan menyakiti penerima karena dapat menghapus pahala amal."
+                    },
+                    {
+                        q: "Apakah benar klaim bahwa 'Sedekah nominal tertentu pasti menjamin seseorang selamat dari kecelakaan fatal'?",
+                        options: [
+                            "Benar, karena sedekah bisa menentukan takdir secara mutlak.",
+                            "Tidak tepat memastikannya, karena sedekah adalah sebab kebaikan, namun kepastian keselamatan berada di bawah kehendak Allah.",
+                            "Pasti benar jika diucapkan oleh pembicara motivasi.",
+                            "Salah, sedekah tidak ada hubungannya dengan kebaikan."
+                        ],
+                        ans: 1,
+                        explanation: "Kita tidak boleh memastikan hal gaib tanpa dalil sahih yang terperinci. Sedekah adalah sebab tertolaknya keburukan atas izin Allah, namun penentuannya mutlak milik Allah."
+                    }
+                ]
+            },
+            {
+                id: 5,
+                level: 2,
+                title: "Penjaga Birrul Walidain",
+                topic: "Berbakti kepada Kedua Orang Tua & Batasannya",
+                material: "Berbakti kepada kedua orang tua (Birrul Walidain) adalah kewajiban agung setelah Tauhid. Bentuknya meliputi lemah lembut dalam berkata, mendoakan mereka, dan mematuhi perintah mereka selama tidak bertentangan dengan syariat Allah.",
+                dalil: {
+                    arabic: "وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ وَبِالْوَالِدَيْنِ إِحْسَانًا",
+                    translation: "Dan Tuhanmu telah memerintahkan agar kamu jangan menyembah selain Dia dan hendaklah berbuat baik kepada ibu bapak.",
+                    ref: "QS. Al-Isra ayat 23"
+                },
+                questions: [
+                    {
+                        q: "Orang tua meminta anti untuk melepas hijab syar'i saat menghadiri acara keluarga. Sikap santriwati yang benar adalah...",
+                        options: [
+                            "Langsung menuruti karena taat orang tua itu wajib mutlak.",
+                            "Membentak orang tua karena perintah mereka salah.",
+                            "Menolak perintah maksiat tersebut dengan santun, tetap berbuat baik, dan menjelaskan dengan lembut.",
+                            "Kabur dari rumah."
+                        ],
+                        ans: 2,
+                        explanation: "Kaidah syar'i menegaskan: Tidak ada ketaatan kepada makhluk dalam maksiat kepada Al-Khaliq (Allah), namun tetap wajib memperlakukan orang tua dengan santun."
+                    },
+                    {
+                        q: "Di antara kalimat berikut, mana yang dilarang diucapkan kepada orang tua sesuai Surah Al-Isra ayat 23?",
+                        options: [
+                            "Mendoakan 'Rabbighfirlii waliwaalidayya'.",
+                            "Mengucapkan perkataan 'Ah' atau 'Uff' yang menunjukkan kejengkelan.",
+                            "Mengucapkan kata 'Jazakallahu khairan'.",
+                            "Meminta izin dengan sopan."
+                        ],
+                        ans: 1,
+                        explanation: "Allah melarang mengatakan perkataan 'ah' (uff) kepada orang tua, apalagi membentak mereka."
+                    },
+                    {
+                        q: "Bagaimana cara santriwati berbakti kepada orang tua yang sudah meninggal dunia?",
+                        options: [
+                            "Membuat acara ritual yang tidak ada tuntunannya.",
+                            "Mendoakan ampunan bagi mereka, bersedekah atas nama mereka, dan menyambung silaturahmi dengan sahabat mereka.",
+                            "Menangis meratapi kepergian mereka setiap hari.",
+                            "Membangun kuburan mereka secara megah."
+                        ],
+                        ans: 1,
+                        explanation: "Doa anak yang saleh, sedekah jariyah, dan menyambung kerabat orang tua adalah amalan yang sampai pahalanya sesuai hadis sahih."
+                    }
+                ]
+            },
+            {
+                id: 6,
+                level: 3,
+                title: "Penjaga Taqwa & Istighfar",
+                topic: "Sebab Datangnya Jalan Keluar & Ampunan",
+                material: "Taqwa artinya menjalankan perintah Allah dan menjauhi larangan-Nya di atas cahaya ilmu. Istighfar adalah memohon ampun disertai penyesalan. Taqwa dan istighfar menjadi sebab dibukanya jalan keluar dan rezeki dari arah tak terduga.",
+                dalil: {
+                    arabic: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ",
+                    translation: "Barangsiapa bertakwa kepada Allah niscaya Dia akan membukakan jalan keluar baginya, dan memberinya rezeki dari arah yang tidak disangka-sangka.",
+                    ref: "QS. At-Talaq ayat 2-3"
+                },
+                questions: [
+                    {
+                        q: "Anti menyadari telah sengaja menggunjing (ghibah) teman sesama santriwati. Langkah taubat yang tepat adalah...",
+                        options: [
+                            "Merasa tenang saja karena semua orang pernah berdosa.",
+                            "Bertaubat kepada Allah, berhenti menggunjing, menyesali perbuatan, dan mendoakan kebaikan bagi teman tersebut.",
+                            "Membalas menggunjing orang lain.",
+                            "Mencari alasan bahwa ghibah tersebut demi kebaikan."
+                        ],
+                        ans: 1,
+                        explanation: "Syarat taubat nasuha dari dosa sesama manusia adalah berhenti, menyesal, bertekad tidak mengulangi, serta memohon maaf atau mendoakannya."
+                    },
+                    {
+                        q: "Apakah setiap musibah atau ujian sakit yang menimpa seorang santriwati pasti merupakan hukuman dosa?",
+                        options: [
+                            "Pasti hukuman atas dosa besar yang disembunyikan.",
+                            "Belum tentu, musibah juga bisa menjadi penggugur dosa dan pengangkat derajat keimanan atas izin Allah.",
+                            "Sakit hanya dialami orang yang kurang beriman.",
+                            "Sakit terjadi tanpa ada takdir Allah."
+                        ],
+                        ans: 1,
+                        explanation: "Sakit dan musibah bagi orang beriman berfungsi menghapus dosa-dosa kecil dan meninggikan derajat di surga."
+                    },
+                    {
+                        q: "Nabi Nuh 'alaihissalam menyeru kaumnya untuk beristighfar dengan janji manfaat berupa...",
+                        options: [
+                            "Kekayaan instan tanpa perlu bekerja.",
+                            "Curahan hujan lebat yang membawa berkah, harta, dan keturunan.",
+                            "Kekebalan dari segala jenis penyakit.",
+                            "Kemampuan melihat hal gaib."
+                        ],
+                        ans: 1,
+                        explanation: "Surah Nuh ayat 10-12 menjelaskan bahwa istighfar menjadi sebab Allah menurunkan hujan lebat dan memperbanyak harta serta anak."
+                    }
+                ]
+            },
+            {
+                id: 7,
+                level: 3,
+                title: "Penjaga Kebaikan & Tahajud",
+                topic: "Tolong-Menolong & Ibadah Malam",
+                material: "Islam memerintahkan untuk saling menolong dalam kebaikan dan takwa. Selain itu, mendirikan salat malam (Tahajud) merupakan kebiasaan orang-orang saleh yang mendekatkan diri kepada Allah pada waktu ijabah.",
+                dalil: {
+                    arabic: "وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ ۖ وَلَا تَعَاوَنُوا عَلَى الْإِثْمِ وَالْعُدْوَانِ",
+                    translation: "Dan tolong-menolonglah kamu dalam (mengerjakan) kebajikan dan takwa, dan jangan tolong-menolong dalam berbuat dosa dan permusuhan.",
+                    ref: "QS. Al-Ma'idah ayat 2"
+                },
+                questions: [
+                    {
+                        q: "Teman satu kamar anti kesulitan memahami pelajaran Nahwu. Sikap anti yang mencerminkan semangat tolong-menolong adalah...",
+                        options: [
+                            "Acuh tak acuh agar mendapat nilai tertinggi sendiri.",
+                            "Membantunya belajar dengan sabar dan ikhlas mengharapkan ridha Allah.",
+                            "Memberikan pengerjaan tugas secara langsung saat ujian (menyontek).",
+                            "Mengejeknya karena lambat memahami."
+                        ],
+                        ans: 1,
+                        explanation: "Menjelaskan pelajaran adalah tolong-menolong dalam kebaikan, sedangkan memberi contekan adalah tolong-menolong dalam kecurangan."
+                    },
+                    {
+                        q: "Manakah sikap yang BENAR ketika anti ingin dimudahkan dalam menghadapi ujian kelulusan?",
+                        options: [
+                            "Hanya mengandalkan tahajud tanpa belajar.",
+                            "Belajar sungguh-sungguh, berdoa, melaksanakan ibadah sunnah sesuai kemampuan, dan bertawakal.",
+                            "Menganggap tahajud menjamin semua keinginan pasti terwujud sesuai selera pribadi.",
+                            "Berhenti berusaha karena percaya semuanya telah ditakdirkan."
+                        ],
+                        ans: 1,
+                        explanation: "Ibadah sunnah seperti tahajud memperkuat ikhtiar dan doa, disertai tawakal penuh atas takdir Allah."
+                    },
+                    {
+                        q: "Salat Tahajud dilaksanakan pada waktu...",
+                        options: [
+                            "Sebelum salat Isya.",
+                            "Di malam hari setelah bangun dari tidur.",
+                            "Tepat saat terbit matahari.",
+                            "Bebas kapan saja di siang hari."
+                        ],
+                        ans: 1,
+                        explanation: "Tahajud secara istilah syar'i adalah salat sunnah malam yang dikerjakan setelah tidur malam."
+                    },
+                    {
+                        q: "Apakah klaim 'Takdir seluruh manusia ditulis ulang dari nol setiap malam Tahajud' memiliki dasar syar'i?",
+                        options: [
+                            "Ya, benar sekali.",
+                            "Tidak benar, penulisan takdir azali sudah ada di Lauhul Mahfuzh, dan penulisan tahunan terjadi pada Lailatul Qadar, bukan setiap malam.",
+                            "Semua ulama sepakat takdir berubah tiap jam.",
+                            "Tahajud tidak ada kaitannya dengan doa."
+                        ],
+                        ans: 1,
+                        explanation: "Penulisan takdir azali sudah ditetapkan Allah 50.000 tahun sebelum penciptaan langit dan bumi. Penulisan takdir tahunan terjadi pada Lailatul Qadar."
+                    }
+                ]
+            },
+            {
+                id: 8,
+                level: 3,
+                title: "FINAL BOSS UJIAN",
+                topic: "Ujian Integratif Menjemput Takdir Terbaik",
+                material: "Barakallahu fiik! Anti telah melewati 7 Pos Ilmu. Sekarang saatnya menguji seluruh pemahaman integratif anti dalam Ujian Akhir ini. Tetap tenang, baca soal dengan teliti, dan niatkan karena Allah!",
+                dalil: {
+                    arabic: "فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ ۚ إِنَّ اللَّهَ يُحِبُّ الْمُتَوَكِّلِينَ",
+                    translation: "Kemudian, apabila engkau telah membulatkan tekad, maka bertawakallah kepada Allah. Sungguh, Allah menyukai orang-orang yang bertawakal.",
+                    ref: "QS. Ali 'Imran ayat 159"
+                },
+                questions: [
+                    {
+                        q: "1. Mengapa seorang santriwati tetap wajib berdoa padahal Allah sudah tahu segala takdirnya?",
+                        options: [
+                            "Karena doa adalah bentuk ibadah dan sebab yang Allah perintahkan untuk kita jalankan.",
+                            "Agar Allah ingat dengan kebutuhan kita.",
+                            "Sebab doa bisa memaksa Allah memenuhi semua keinginan kita.",
+                            "Hanya sebagai formalitas tanpa makna."
+                        ],
+                        ans: 0,
+                        explanation: "Doa adalah inti ibadah (Ad-Du'a huwal 'ibadah) dan merupakan sebab yang Allah perintahkan."
+                    },
+                    {
+                        q: "2. Ketika hasil ujian tidak sesuai dengan target yang diperjuangkan, sikap rida terhadap takdir ditunjukkan dengan...",
+                        options: [
+                            "Marah dan berhenti beribadah.",
+                            "Pramukhir, bersabar, bersyukur atas apa yang dicapai, dan mengevaluasi kekurangan.",
+                            "Menyalahkan ustadzah yang membuat soal.",
+                            "Berputus asa dari rahmat Allah."
+                        ],
+                        ans: 1,
+                        explanation: "Seorang mukminah bersabar saat ditimpa takdir yang tidak disukai dan meyakini ada hikmah terbaik di baliknya."
+                    },
+                    {
+                        q: "3. Menurut HR. Bukhari dan Muslim, hubungan antara menyambung silaturahmi dengan rezeki adalah...",
+                        options: [
+                            "Silaturahmi menjadi sebab syar'i dilapangkannya rezeki atas izin Allah.",
+                            "Silaturahmi menggantikan kewajiban bekerja.",
+                            "Silaturahmi hanya menambah harta berupa uang tunai.",
+                            "Silaturahmi tidak ada kaitannya dengan kehidupan dunia."
+                        ],
+                        ans: 0,
+                        explanation: "Silaturahmi adalah sebab yang Allah tetapkan untuk memperluas rezeki dan keberkahan umur."
+                    },
+                    {
+                        q: "4. Apakah diperbolehkan bersedekah dengan niat utama agar dipuji teman-teman pondok sebagai orang dermawan?",
+                        options: [
+                            "Boleh agar menginspirasi orang lain.",
+                            "Haram dan termasuk riya' yang merusak pahala sedekah.",
+                            "Boleh asal nominalnya besar.",
+                            "Dapat pahala setengah."
+                        ],
+                        ans: 1,
+                        explanation: "Riya' (pamer amalan) tergolong syirik kecil yang menghapuskan pahala amalan tersebut."
+                    },
+                    {
+                        q: "5. Batasan ketaatan santriwati kepada kedua orang tua adalah...",
+                        options: [
+                            "Taat dalam segala hal selama bukan dalam maksiat kepada Allah.",
+                            "Taat hanya jika diberi uang jajan.",
+                            "Tidak wajib taat jika tinggal di pondok.",
+                            "Taat dalam hal ibadah saja."
+                        ],
+                        ans: 0,
+                        explanation: "Ketaatan kepada orang tua bersifat mutlak dalam perkara ma'ruf (kebaikan), dan tidak boleh dalam kemaksiatan."
+                    },
+                    {
+                        q: "6. Salah satu janji Allah bagi orang yang bertakwa dalam Surah At-Talaq ayat 2-3 adalah...",
+                        options: [
+                            "Bebas dari segala bentuk ujian hidup.",
+                            "Diberikan jalan keluar dari kesulitan dan rezeki dari arah tak disangka.",
+                            "Dijamin menjadi pimpinan di dunia.",
+                            "Tidak akan pernah merasa sakit."
+                        ],
+                        ans: 1,
+                        explanation: "Ayat ini merupakan janji Allah bagi hamba yang memelihara ketakwaan."
+                    },
+                    {
+                        q: "7. Istighfar yang sungguh-sungguh harus memenuhi syarat berikut, KECUALI...",
+                        options: [
+                            "Menyesali dosa yang dilakukan.",
+                            "Meninggalkan dosa tersebut.",
+                            "Bertekad kuat tidak mengulanginya.",
+                            "Bangga menceritakan dosa tersebut kepada teman."
+                        ],
+                        ans: 3,
+                        explanation: "Menceritakan dosa dengan bangga (mumaatsalah/mujaharah) dilarang dalam Islam."
+                    },
+                    {
+                        q: "8. Dalam menolong teman, niat yang lurus harus ditujukan...",
+                        options: [
+                            "Murni mengharapkan pahala dan ridha Allah semata.",
+                            "Agar teman membalas budi di kemudian hari.",
+                            "Agar mendapat pujian dari pengasuh pondok.",
+                            "Agar disegani di kelas."
+                        ],
+                        ans: 0,
+                        explanation: "Keikhlasan niat adalah syarat diterimanya setiap amal kebajikan."
+                    },
+                    {
+                        q: "9. Sepertiga malam terakhir memiliki keutamaan khusus karena...",
+                        options: [
+                            "Matahari mulai terbit.",
+                            "Allah bertajalli mendekat ke langit dunia mengabulkan doa orang yang memohon.",
+                            "Waktu tepat untuk belajar tanpa salat.",
+                            "Semua Malaikat tidur."
+                        ],
+                        ans: 1,
+                        explanation: "Sebagaimana dijelaskan dalam hadis sahih Muttafaqun 'Alaih."
+                    },
+                    {
+                        q: "10. Makna hakiki dari 'Menjemput Takdir Terbaik' bagi seorang santriwati adalah...",
+                        options: [
+                            "Mengubah ketetapan Allah sesuai selera kita.",
+                            "Menjalankan sebab-sebab syar'i (belajar, berdoa, beramal saleh) dengan ikhlas lalu bertawakal kepada Allah.",
+                            "Duduk diam menunggu keajaiban datang.",
+                            "Merasa paling berhak masuk surga."
+                        ],
+                        ans: 1,
+                        explanation: "Menjemput takdir terbaik adalah dengan memaksimalkan amalan sebab kebaikan dan menyerahkan hasilnya kepada hikmah Allah."
+                    }
+                ]
+            }
+        ];
+
+        /* ============================================================
+           STATE MANAGEMENT & GAME VARIABLES
+           ============================================================ */
+        let gameState = {
+            playerName: "",
+            playerClass: "",
+            score: 0,
+            completedPosts: [], // Track completed post IDs e.g. [1, 2]
+            currentPostId: 1,
+            currentQuestionIdx: 0,
+            userAnswers: {}, // { postId_questionIdx: chosenOptionIndex }
+            isAudioOn: true
+        };
+
+        // Web Audio API Sound Effects (Simple Synths)
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function playTone(freq, type, duration) {
+            if (!gameState.isAudioOn) return;
+            try {
+                if (!audioCtx) audioCtx = new AudioCtx();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {
+                // Audio fallback
+            }
+        }
+
+        function playSoundSuccess() {
+            playTone(523.25, 'sine', 0.15); // C5
+            setTimeout(() => playTone(659.25, 'sine', 0.25), 120); // E5
+        }
+
+        function playSoundWrong() {
+            playTone(220, 'sawtooth', 0.25); // A3
+        }
+
+        function playSoundClick() {
+            playTone(400, 'triangle', 0.05);
+        }
+
+        function toggleAudio() {
+            gameState.isAudioOn = !gameState.isAudioOn;
+            const btn = document.getElementById('btnSoundToggle');
+            btn.innerText = gameState.isAudioOn ? '🔊' : '🔇';
+        }
+
+        /* ============================================================
+           NAVIGATION & FLOW CONTROLLERS
+           ============================================================ */
+        function submitRegistration() {
+            const nameInput = document.getElementById('inputPlayerName').value.trim();
+            const classInput = document.getElementById('inputPlayerClass').value;
+            const errorMsg = document.getElementById('regErrorMsg');
+
+            if (!nameInput || !classInput) {
+                errorMsg.classList.remove('hidden');
+                playSoundWrong();
+                return;
+            }
+
+            errorMsg.classList.add('hidden');
+            gameState.playerName = nameInput;
+            gameState.playerClass = classInput;
+
+            // Update UI elements
+            document.getElementById('statPlayerName').innerText = nameInput;
+            document.getElementById('welcomeGreetingText').innerHTML = 
+                `Assalamu'alaikum, ukhti <strong>${nameInput}</strong>! Ahlan wa sahlan di Misi Menjemput Takdir Terbaik. Bersama Ummi Masroh, kita akan menjelajahi tiga level ilmu dan melewati tujuh pos tantangan. Siapkah anti belajar dan menguji pemahamanmu?`;
+
+            document.getElementById('topStatsBar').classList.remove('hidden');
+            document.getElementById('screenRegister').classList.add('hidden');
+            document.getElementById('screenMap').classList.remove('hidden');
+
+            playSoundSuccess();
+            updateMapUI();
+        }
+
+        function updateMapUI() {
+            document.getElementById('statPoints').innerText = `${gameState.score} Poin`;
+
+            // Iterate 8 posts (7 regular + 1 final boss)
+            for (let i = 1; i <= 8; i++) {
+                const card = document.getElementById(`cardPos${i}`);
+                const statusSpan = document.getElementById(`statusPos${i}`);
+                const isCompleted = gameState.completedPosts.includes(i);
+                
+                // Unlock logic: Pos 1 unlocked. Pos N unlocked if Pos N-1 completed.
+                let isUnlocked = (i === 1) || gameState.completedPosts.includes(i - 1);
+
+                if (isCompleted) {
+                    card.className = "bg-green-50 p-4 rounded-xl border-2 border-green-400 cursor-pointer transition flex items-center justify-between shadow-sm";
+                    statusSpan.className = "text-xs font-bold text-green-600 flex items-center gap-1";
+                    statusSpan.innerHTML = "Selesai ✓";
+                } else if (isUnlocked) {
+                    card.className = "bg-white p-4 rounded-xl border-2 border-dusty-400 hover:border-dusty-600 cursor-pointer transition flex items-center justify-between shadow-sm gold-glow";
+                    statusSpan.className = "text-xs font-bold text-dusty-600 animate-pulse";
+                    statusSpan.innerHTML = (i === 8) ? "MULAI UJIAN ⭐" : "Buka Pos ▶";
+                } else {
+                    card.className = "bg-white opacity-50 p-4 rounded-xl border-2 border-gray-200 cursor-not-allowed transition flex items-center justify-between shadow-sm";
+                    statusSpan.className = "text-xs font-bold text-gray-400";
+                    statusSpan.innerHTML = "Terkunci 🔒";
+                }
+            }
+
+            // Update level badges status
+            if (gameState.completedPosts.includes(2)) {
+                document.getElementById('badgeL2').className = "self-start md:self-auto text-xs px-3 py-1 rounded-full font-bold bg-cream-200 text-gold-700 border border-gold-300";
+                document.getElementById('badgeL2').innerText = "Aktif";
+            }
+            if (gameState.completedPosts.includes(5)) {
+                document.getElementById('badgeL3').className = "self-start md:self-auto text-xs px-3 py-1 rounded-full font-bold bg-cream-200 text-gold-700 border border-gold-300";
+                document.getElementById('badgeL3').innerText = "Aktif";
+            }
+        }
+
+        function openPost(postId) {
+            playSoundClick();
+            // Check if unlocked
+            const isUnlocked = (postId === 1) || gameState.completedPosts.includes(postId - 1);
+            if (!isUnlocked) {
+                alert(`Ukhti ${gameState.playerName}, pos ini masih terkunci. Selesaikan pos sebelumnya terlebih dahulu ya!`);
+                return;
+            }
+
+            gameState.currentPostId = postId;
+            gameState.currentQuestionIdx = 0;
+
+            const postData = GAME_DATA.find(p => p.id === postId);
+
+            // Set labels
+            document.getElementById('postLevelLabel').innerText = `LEVEL ${postData.level} • POS ${postId}`;
+            document.getElementById('postTitleLabel').innerText = postData.title;
+            document.getElementById('postTopicLabel').innerText = postData.topic;
+            document.getElementById('materialContentText').innerHTML = `<p>${postData.material}</p>`;
+            document.getElementById('dalilArabic').innerText = postData.dalil.arabic;
+            document.getElementById('dalilTranslation').innerText = `"${postData.dalil.translation}"`;
+            document.getElementById('dalilReference').innerText = `— ${postData.dalil.ref}`;
+
+            // Show Material Box, hide Quiz Box
+            document.getElementById('boxMaterial').classList.remove('hidden');
+            document.getElementById('boxQuiz').classList.add('hidden');
+
+            document.getElementById('screenMap').classList.add('hidden');
+            document.getElementById('screenPostDetail').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function backToMap() {
+            playSoundClick();
+            document.getElementById('screenPostDetail').classList.add('hidden');
+            document.getElementById('screenMap').classList.remove('hidden');
+            updateMapUI();
+        }
+
+        function startQuizForCurrentPost() {
+            playSoundClick();
+            document.getElementById('boxMaterial').classList.add('hidden');
+            document.getElementById('boxQuiz').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const postData = GAME_DATA.find(p => p.id === gameState.currentPostId);
+            const qData = postData.questions[gameState.currentQuestionIdx];
+
+            document.getElementById('quizProgressText').innerText = `Soal ${gameState.currentQuestionIdx + 1} dari ${postData.questions.length}`;
+            document.getElementById('quizQuestionText').innerText = qData.q;
+
+            // Render Options
+            const container = document.getElementById('quizOptionsContainer');
+            container.innerHTML = '';
+
+            // Hide feedback box
+            document.getElementById('quizFeedbackBox').classList.add('hidden');
+
+            const optionPrefixes = ['A', 'B', 'C', 'D'];
+            qData.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border border-dusty-300 bg-white hover:bg-dusty-50 hover:border-dusty-400 font-medium text-sm md:text-base text-mauve-900 transition flex items-start gap-3 shadow-sm";
+                btn.innerHTML = `
+                    <span class="w-7 h-7 rounded-full bg-dusty-100 border border-dusty-300 font-bold text-dusty-700 flex items-center justify-center shrink-0 text-xs">${optionPrefixes[idx]}</span>
+                    <span class="mt-0.5 leading-relaxed">${optText}</span>
+                `;
+                btn.onclick = () => checkAnswer(idx);
+                container.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(chosenIdx) {
+            const postData = GAME_DATA.find(p => p.id === gameState.currentPostId);
+            const qData = postData.questions[gameState.currentQuestionIdx];
+
+            // Save user answer
+            const key = `${gameState.currentPostId}_${gameState.currentQuestionIdx}`;
+            gameState.userAnswers[key] = chosenIdx;
+
+            const isCorrect = (chosenIdx === qData.ans);
+
+            // Disable option buttons
+            const optionBtns = document.getElementById('quizOptionsContainer').children;
+            for (let i = 0; i < optionBtns.length; i++) {
+                optionBtns[i].disabled = true;
+                optionBtns[i].classList.add('cursor-not-allowed', 'opacity-70');
+                if (i === qData.ans) {
+                    optionBtns[i].classList.remove('bg-white', 'opacity-70');
+                    optionBtns[i].classList.add('bg-green-100', 'border-green-500', 'text-green-900', 'font-bold');
+                } else if (i === chosenIdx && !isCorrect) {
+                    optionBtns[i].classList.remove('bg-white', 'opacity-70');
+                    optionBtns[i].classList.add('bg-red-100', 'border-red-400', 'text-red-900');
+                }
+            }
+
+            // Points calculation
+            if (isCorrect) {
+                gameState.score += 100;
+                playSoundSuccess();
+            } else {
+                playSoundWrong();
+            }
+            document.getElementById('statPoints').innerText = `${gameState.score} Poin`;
+
+            // Display Feedback/Pembahasan
+            const feedbackBox = document.getElementById('quizFeedbackBox');
+            const feedbackHeader = document.getElementById('quizFeedbackHeader');
+            const feedbackBody = document.getElementById('quizFeedbackBody');
+
+            feedbackBox.classList.remove('hidden');
+            if (isCorrect) {
+                feedbackBox.className = "p-5 rounded-xl border border-green-300 bg-green-50 space-y-2 transition-all";
+                feedbackHeader.className = "font-bold text-base text-green-800 flex items-center gap-2";
+                feedbackHeader.innerHTML = "<span>Masya Allah, Jawaban Benar! 🎉 (+100 Poin)</span>";
+            } else {
+                feedbackBox.className = "p-5 rounded-xl border border-red-300 bg-red-50 space-y-2 transition-all";
+                feedbackHeader.className = "font-bold text-base text-red-800 flex items-center gap-2";
+                feedbackHeader.innerHTML = "<span>Afwan, Jawaban Belum Tepat! 💡</span>";
+            }
+
+            feedbackBody.innerHTML = `<strong>Pembahasan:</strong> ${qData.explanation}`;
+
+            // Check if last question in post
+            const btnNext = document.getElementById('btnNextQuestion');
+            if (gameState.currentQuestionIdx + 1 >= postData.questions.length) {
+                btnNext.innerText = (gameState.currentPostId === 8) ? "SELESAIKAN UJIAN AKHIR ✨" : "Selesaikan Pos Ini & Ambil Poin 🎉";
+            } else {
+                btnNext.innerText = "Lanjut Soal Berikutnya →";
+            }
+        }
+
+        function nextQuestion() {
+            playSoundClick();
+            const postData = GAME_DATA.find(p => p.id === gameState.currentPostId);
+
+            if (gameState.currentQuestionIdx + 1 < postData.questions.length) {
+                gameState.currentQuestionIdx++;
+                renderQuestion();
+            } else {
+                // Post Completed!
+                if (!gameState.completedPosts.includes(gameState.currentPostId)) {
+                    gameState.completedPosts.push(gameState.currentPostId);
+                    // Add Level Bonus Poin if level finished
+                    gameState.score += 100; // Bonus completion
+                }
+
+                if (gameState.currentPostId === 8) {
+                    // Game Finished! Go to Results
+                    showFinalResults();
+                } else {
+                    // Return to map with alert
+                    backToMap();
+                }
+            }
+        }
+
+        /* ============================================================
+           FINAL RESULTS & EVALUATION CALCULATOR
+           ============================================================ */
+        function showFinalResults() {
+            document.getElementById('screenPostDetail').classList.add('hidden');
+            document.getElementById('screenResult').classList.remove('hidden');
+
+            // Calculate total correct questions
+            let totalQuestions = 0;
+            let correctAnswersCount = 0;
+
+            GAME_DATA.forEach(post => {
+                post.questions.forEach((q, qIdx) => {
+                    totalQuestions++;
+                    const userAns = gameState.userAnswers[`${post.id}_${qIdx}`];
+                    if (userAns === q.ans) {
+                        correctAnswersCount++;
+                    }
+                });
+            });
+
+            const accuracy = Math.round((correctAnswersCount / totalQuestions) * 100);
+
+            // Date format
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+            // Set info
+            document.getElementById('resPlayerName').innerText = gameState.playerName;
+            document.getElementById('resPlayerClass').innerText = gameState.playerClass;
+            document.getElementById('resDate').innerText = dateStr;
+            document.getElementById('resTotalPoints').innerText = `${gameState.score} Poin`;
+            document.getElementById('resAkurasiText').innerText = `Persentase Ketepatan Jawaban: ${accuracy}% (${correctAnswersCount} dari ${totalQuestions} Soal Benar)`;
+
+            // Title & Gelar Determination
+            let title = "";
+            let message = "";
+
+            if (accuracy >= 90) {
+                title = "⭐ Bintang Istiqamah";
+                message = `Barakallahu fiiki, anti <strong>${gameState.playerName}</strong>! Alhamdulillah, anti telah menyelesaikan perjalanan ilmu ini dengan hasil yang sangat memuaskan. Semoga Allah menjadikan kita hamba-hamba yang senantiasa berdoa, beramal saleh, bertakwa, dan bertawakal kepada-Nya.`;
+            } else if (accuracy >= 75) {
+                title = "🌿 Penjelajah Amal Saleh";
+                message = `Masya Allah, anti <strong>${gameState.playerName}</strong> telah berusaha dengan sangat baik. Teruslah mengasah pemahaman agama dan mengamalkan ilmu yang telah dipelajari dalam kehidupan sehari-hari.`;
+            } else if (accuracy >= 60) {
+                title = "📖 Pejuang Ilmu";
+                message = `Alhamdulillah, perolehan yang baik ukhti <strong>${gameState.playerName}</strong>! Jangan cepat merasa puas. Ulangi kembali materi-materi ilmu ini agar pemahaman syariat anti semakin kokoh.`;
+            } else {
+                title = "🌱 Pencari Ilmu yang Terus Bertumbuh";
+                message = `Semangat terus ukhti <strong>${gameState.playerName}</strong>! Menuntut ilmu adalah proses belajar. Teruslah berdoa dan mempelajari kembali pembahasan soal agar ilmu ini tertanam kuat di dada.`;
+            }
+
+            document.getElementById('resBadgeTitle').innerText = title;
+            document.getElementById('resUmmiMessage').innerHTML = message;
+
+            // Generate Full Review Modal Items
+            generateReviewItems();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function generateReviewItems() {
+            const container = document.getElementById('reviewListContainer');
+            container.innerHTML = '';
+
+            GAME_DATA.forEach(post => {
+                const postDiv = document.createElement('div');
+                postDiv.className = "border border-dusty-200 rounded-xl p-4 bg-dusty-50/50 space-y-3";
+                
+                let html = `<h4 class="font-bold text-mauve-900 text-sm border-b pb-1">POS ${post.id}: ${post.title}</h4>`;
+
+                post.questions.forEach((q, qIdx) => {
+                    const userAns = gameState.userAnswers[`${post.id}_${qIdx}`];
+                    const isCorrect = (userAns === q.ans);
+                    const optPrefixes = ['A', 'B', 'C', 'D'];
+
+                    html += `
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 space-y-1">
+                            <p class="font-semibold text-mauve-900">${qIdx + 1}. ${q.q}</p>
+                            <p class="text-xs ${isCorrect ? 'text-green-700 font-bold' : 'text-red-600 font-bold'}">
+                                Jawaban Anti: ${userAns !== undefined ? optPrefixes[userAns] + '. ' + q.options[userAns] : 'Tidak dijawab'} ${isCorrect ? '✓ (Benar)' : '✗ (Belum Tepat)'}
+                            </p>
+                            ${!isCorrect ? `<p class="text-xs text-green-800 font-semibold">Jawaban Benar: ${optPrefixes[q.ans]}. ${q.options[q.ans]}</p>` : ''}
+                            <p class="text-xs text-gray-600 bg-cream-100 p-2 rounded mt-1"><strong>Pembahasan:</strong> ${q.explanation}</p>
+                        </div>
+                    `;
+                });
+
+                postDiv.innerHTML = html;
+                container.appendChild(postDiv);
+            });
+        }
+
+        function toggleReviewModal() {
+            playSoundClick();
+            const modal = document.getElementById('reviewModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function restartGame() {
+            playSoundClick();
+            gameState.score = 0;
+            gameState.completedPosts = [];
+            gameState.currentPostId = 1;
+            gameState.currentQuestionIdx = 0;
+            gameState.userAnswers = {};
+
+            document.getElementById('screenResult').classList.add('hidden');
+            document.getElementById('screenRegister').classList.remove('hidden');
+            document.getElementById('topStatsBar').classList.add('hidden');
+            document.getElementById('inputPlayerName').value = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
